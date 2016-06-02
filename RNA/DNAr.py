@@ -1,0 +1,30 @@
+import time
+def maxRNA(rna):
+	length = len(rna)
+	i = 0
+	if length == 1:
+		return 0
+	elif length == 0:
+		return 0
+	else:
+		for x in rna:
+			index = rna.index(x)
+
+			if (rna[-1] == x) and (length-index>4):
+				a=rna[index+1:length-1]
+				b=rna[0:index]
+				return 1+maxRNA(a)+maxRNA(b)
+				
+			else:
+				i+=1
+				continue
+		if i == len(rna):
+			rna=rna[:-1]			
+			return maxRNA(rna)
+
+
+	
+start =time.clock()
+print maxRNA("QWERTYUIOPASDFGHJKLZXCVBNMQWERTYUIOPASDFGHJKLZXCVBNMQWERTYUIOPASDFGHJKLZXCVBNMQWERTYUIOPASDFGHJKLZXCVBNMQWERTYUIOPASDFGHJKLZXCVBNMQWERTYUIOPASDFGHJKLZXCVBNM1234567890QAZWSXEDCRFVTGBYHNUJMASDFGHJKLQWERTYUIOPZXCVBNMHIJKMNBVCXZPOIUYTREWQSLKJHGFDSAMJUNHYBGTVFRCDEXSWZAQ0987654321MNBVCXZLKJHGFDSAPOIUYTREWQMNBVCXZLKJHGFDSAPOIUYTREWQMNBVCXZLKJHGFDSAPOIUYTREWQMNBVCXZLKJHGFDSAPOIUYTREWQMNBVCXZLKJHGFDSAPOIUYTREWQMNBVCXZLKJHGFDSAPOIUYTREWQ")
+end = time.clock()
+print('Running time: %s Seconds'%(end-start))
